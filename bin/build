@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -Eeuxo pipefail
+
+opts="$*"
+image="ruby-base"
+
+# docker build [OPTIONS] PATH | URL | -
+docker build \
+  --tag ${image} ${opts} \
+  .

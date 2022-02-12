@@ -10,5 +10,6 @@ docker run \
   --rm \
   --interactive \
   --tty \
+  --volume "$(pwd):/home/app" \
   ${image} \
   ${opts}

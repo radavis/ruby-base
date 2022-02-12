@@ -1,0 +1,2 @@
+alias ruby-build="docker build --tag ruby-base $(pwd)"
+alias ruby-run="docker run --rm -it -v $(pwd):/home/app ruby-base"

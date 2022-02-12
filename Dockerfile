@@ -4,3 +4,4 @@ RUN apk update && apk upgrade --no-cache
 #   bash \
 #   less
 # SHELL ["/bin/bash", "-c"]
+WORKDIR /home/app
