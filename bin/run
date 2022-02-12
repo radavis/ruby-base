@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -Eeuxo pipefail
+
+opts="$*"
+image="ruby-base"
+
+# docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+docker run \
+  --rm \
+  --interactive \
+  --tty \
+  ${image} \
+  ${opts}
