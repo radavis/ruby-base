@@ -49,6 +49,28 @@ $ docker run --rm -it -v "$(pwd):/home/app" ruby-base ruby lib/hello_world.rb
 # Hi 👋
 ```
 
+Generate a Gemfile with Bundler.
+
+```bash
+# bundler is preinstalled, no need to `gem install bundler`
+$ docker run --rm -it -v "$(pwd):/home/app" ruby-base bundle init
+$ la
+# -rw-r--r-- 1 root root  147 Feb 13 09:47 Gemfile
+$ sudo rm Gemfile
+```
+
+To fix the permissions and ownership of files generated within containers, we
+can give docker our user and group ids.
+
+```bash
+$ docker run --help | grep user
+# -u, --user string  Username or UID (format: <name|uid>[:<group|gid>])
+$ id -u; id -g
+# 1000
+# 1000
+$ docker run --rm -it -v "$(pwd):/home/app" --user "$(id -u):$(id -g)" ruby-base bundle init
+```
+
 See `bin/build`, `bin/run`, and the readme.
 
 ## Troubleshooting

@@ -2,7 +2,7 @@
 
 set -Eeuxo pipefail
 
-opts="$*"
+args="$*"
 image="ruby-base"
 
 # docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
@@ -11,5 +11,6 @@ docker run \
   --interactive \
   --tty \
   --volume "$(pwd):/home/app" \
+  --user "$(id -u):$(id -g)" \
   ${image} \
-  ${opts}
+  ${args}
