@@ -1,8 +1,11 @@
-# README
+# ruby-base
+
+`Dockerfile` and supporting scripts for running ruby code within a container.
 
 ## Getting Started
 
-`build` and `run` scripts are provided.
+- `build` - execute instructions within Dockerfile, creating `ruby-base` container
+- `run` - execute command(s) within `ruby-base` conatiner
 
 ```bash
 $ ./bin/build
