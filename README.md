@@ -4,7 +4,7 @@
 
 ## Getting Started
 
-- `build` - execute instructions within Dockerfile, creating `ruby-base` container
+- `build` - execute instructions within Dockerfile, install dependencies declared in `Gemfile`, creating the `ruby-base` container
 - `run` - execute command(s) within `ruby-base` conatiner
 
 ```bash
@@ -18,13 +18,4 @@ Or, use the provided aliases.
 $ source .alias
 $ ruby-build
 $ ruby-run ruby lib/hello_world.rb
-```
-
-## Installing Gems
-
-```bash
-$ ./bin/run bundle init
-# Writing new Gemfile to /home/app/Gemfile
-# modify Gemfile, then
-$ ./bin/run bundle install
 ```

@@ -1,4 +1,8 @@
-# Dockerfile
+# ruby-base
+
+An explanation of how the core files here came to be.
+
+## Steps
 
 Build an image called `ruby-base` from `Dockerfile` instructions.
 
@@ -69,6 +73,25 @@ $ id -u; id -g
 # 1000
 # 1000
 $ docker run --rm -it -v "$(pwd):/home/app" --user "$(id -u):$(id -g)" ruby-base bundle init
+```
+
+Add dependencies to the Gemfile, and install them.
+
+```bash
+$ docker run --rm -it -v "$(pwd):/home/app" -u "$(id -u):$(id -g)" ruby-base bundle install
+# `/` is not writable.
+# Bundler will use `/tmp/bundler20220214-1-bnutv01' as your home directory temporarily.
+```
+
+The container OS doesn't recognize our UID/GID when installing gems.
+We can get around this by moving the `bundle install` step to our build script.
+
+```Dockerfile
+FROM ruby:3.0.3-alpine
+RUN apk update && apk upgrade --no-cache
+WORKDIR /home/app
+COPY Gemfile ./
+RUN bundle install
 ```
 
 See `bin/build`, `bin/run`, and the readme.

@@ -5,3 +5,5 @@ RUN apk update && apk upgrade --no-cache
 #   less
 # SHELL ["/bin/bash", "-c"]
 WORKDIR /home/app
+COPY Gemfile ./
+RUN bundle install
