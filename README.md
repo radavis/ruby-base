@@ -19,3 +19,17 @@ $ source .alias
 $ ruby-build
 $ ruby-run ruby lib/hello_world.rb
 ```
+
+## Documentation
+
+Add a gem to the Gemfile, then start the docs server.
+
+```Gemfile
+source "https://rubygems.org"
+gem "httparty"
+```
+
+```bash
+$ ./bin/docs
+# visit localhost:8808
+```

@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -Eeuxo pipefail
+
+args="$*"
+image="ruby-docs"
+target="docs"
+
+# docker build [OPTIONS] PATH | URL | -
+docker build \
+  --tag ${image} \
+  --target ${target} \
+  .
+
+# docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+docker run \
+  --rm \
+  --interactive \
+  --tty \
+  -p "8808:8808" \
+  ${image} \
+  ${args}
