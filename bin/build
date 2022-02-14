@@ -4,8 +4,10 @@ set -Eeuxo pipefail
 
 opts="$*"
 image="ruby-base"
+target="base"
 
 # docker build [OPTIONS] PATH | URL | -
 docker build \
-  --tag ${image} ${opts} \
+  --tag ${image} \
+  --target ${target} ${opts} \
   .

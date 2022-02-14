@@ -1,0 +1,6 @@
+# https://guides.rubygems.org/command-reference/#gem-environment
+---
+:verbose: true
+:update_sources: true
+:backtrace: true
+gem: --document
