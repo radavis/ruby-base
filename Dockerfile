@@ -3,10 +3,17 @@ RUN apk update && apk upgrade --no-cache
 RUN apk add --no-cache \
   bash \
   build-base \
-  less
+  less \
+  mariadb-dev \
+  nodejs \
+  npm \
+  tzdata
 SHELL ["/bin/bash", "-c"]
-COPY .gemrc /usr/local/etc
 WORKDIR /home/app
+RUN npm install --global yarn
+COPY .gemrc /usr/local/etc
+ENV BUNDLE_JOBS=4 \
+  BUNDLE_RETRY=3
 COPY Gemfile ./
 RUN bundle install
 
