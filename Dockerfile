@@ -7,10 +7,11 @@ RUN apk add --no-cache \
   mariadb-dev \
   nodejs \
   npm \
-  tzdata
+  tzdata \
+  yarn
 SHELL ["/bin/bash", "-c"]
+ENV HOME=/home/app
 WORKDIR /home/app
-RUN npm install --global yarn
 COPY .gemrc /usr/local/etc
 ENV BUNDLE_JOBS=4 \
   BUNDLE_RETRY=3
