@@ -1,5 +1,7 @@
 # Rails
 
+How we got from branch `main` to `rails`
+
 ```bash
 $ bin/build
 $ bin/run rails new --help
