@@ -8,16 +8,11 @@
 - `run` - execute command(s) within `ruby-base` conatiner
 
 ```bash
+$ git clone https://github.com/radavis/ruby-base/
+$ cd ruby-base
+$ git checkout human
 $ ./bin/build
 $ ./bin/run ruby lib/hello_world.rb
-```
-
-Or, use the provided aliases.
-
-```bash
-$ source .alias
-$ ruby-build
-$ ruby-run ruby lib/hello_world.rb
 ```
 
 ## Documentation
@@ -32,4 +27,12 @@ gem "httparty"
 ```bash
 $ ./bin/docs
 # visit localhost:8808
+```
+
+## Human Class
+
+Run the tests
+
+```bash
+$ bin/run ruby lib/human_test.rb
 ```
