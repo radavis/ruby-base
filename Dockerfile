@@ -17,6 +17,7 @@ ENV BUNDLE_JOBS=4 \
   BUNDLE_RETRY=3
 COPY Gemfile ./
 RUN bundle install
+CMD ["rails", "server", "--binding=0.0.0.0"]
 
 FROM base AS docs
 RUN gem install yard
