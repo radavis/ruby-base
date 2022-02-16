@@ -14,7 +14,16 @@ $ bin/run rails new . \
     --skip-spring \
     --skip-bootsnap \
     --skip-listen
-# Overwrite the Gemfile
+# Overwrite the Gemfile, but not the README
 $ bin/build
 $ bin/run rails webpacker:install
+```
+
+## User Model
+
+```bash
+$ bin/run rails generate model User name:string email:string
+$ bin/run rails db:migrate
+# code
+$ bin/run rails test
 ```
