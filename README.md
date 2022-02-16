@@ -1,6 +1,7 @@
 # ruby-base
 
-`Dockerfile` and supporting scripts for running ruby code within a container.
+This repository contains a `Dockerfile` and supporting scripts for running ruby
+code within a container.
 
 ## Getting Started
 

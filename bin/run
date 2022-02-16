@@ -4,13 +4,19 @@ set -Eeuo pipefail
 
 args="$*"
 image="ruby-base"
+name="ruby-base-web"
+network="ruby-base-net"
+port=3000
 
 # docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 docker run \
   --rm \
   --interactive \
   --tty \
+  --name ${name} \
+  --network ${network} \
   --volume "$(pwd):/home/app" \
   --user "$(id -u):$(id -g)" \
+  -p ${port} \
   ${image} \
   ${args}

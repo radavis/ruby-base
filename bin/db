@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+opts="$*"
+container=ruby-base-db
+network=ruby-base-net
+port=3906
+
+up() {
+  docker run \
+    --detach \
+    --env MARIADB_ROOT_PASSWORD=Passw0rd \
+    --name ${container} \
+    --network ${network} \
+    --user "$(id -u):$(id -g)" \
+    --volume "$(pwd)/.mysql:/var/lib/mysql" \
+    mariadb:10.4 --port ${port}
+}
+
+down() {
+  docker stop ${container}
+  docker rm ${container}
+}
+
+logs() {
+  docker logs --follow ${container}
+}
+
+[[ $opts =~ "--up" ]] && up
+[[ $opts =~ "--down" ]] && down
+[[ $opts =~ "--logs" ]] && logs
+[[ -z $opts ]] && { echo "Usage: bin/db [--up|--down|--logs]"; exit 1; }

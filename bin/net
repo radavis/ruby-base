@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+opts="$*"
+name=ruby-base-net
+
+up() {
+  docker network create --driver bridge ${name}
+}
+
+down() {
+  docker network rm ${name}
+}
+
+info() {
+  docker network inspect ${name}
+}
+
+[[ $opts =~ "--up" ]] && up
+[[ $opts =~ "--down" ]] && down
+[[ $opts =~ "--info" ]] && info
+[[ -z $opts ]] && { echo "Usage: bin/net [--up|--down|--info]"; exit 1; }
