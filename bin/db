@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
+#
+# Manage a mariadb service via Docker
 
 set -Eeuo pipefail
 
-opts="$*"
-container=ruby-base-db
-network=ruby-base-net
+image="mariadb:10.4"
+container=ruby-db
+network=ruby-net
 port=3906
 
 up() {
+  # docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
   docker run \
     --detach \
     --env MARIADB_ROOT_PASSWORD=Passw0rd \
@@ -15,19 +18,19 @@ up() {
     --network ${network} \
     --user "$(id -u):$(id -g)" \
     --volume "$(pwd)/.mysql:/var/lib/mysql" \
-    mariadb:10.4 --port ${port}
+    ${image} --port ${port}
 }
 
 down() {
-  docker stop ${container}
-  docker rm ${container}
+  docker stop ${container} || true
+  docker rm ${container} || true
 }
 
-logs() {
-  docker logs --follow ${container}
-}
+logs() { docker logs --follow ${container}; }
+help() { echo "Usage: bin/db --up|down|logs"; }
 
+opts="$*"
 [[ $opts =~ "--up" ]] && up
 [[ $opts =~ "--down" ]] && down
 [[ $opts =~ "--logs" ]] && logs
-[[ -z $opts ]] && { echo "Usage: bin/db [--up|--down|--logs]"; exit 1; }
+[[ -z $opts || $opts =~ "--help" ]] && help && exit 1

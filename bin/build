@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
+#
+# Wrapper script for "docker build". Script arguments passed as options to "docker build".
+#
+# Builds the "ruby-base" image from Dockerfile instructions.
 
 set -Eeuxo pipefail
 
 opts="$*"
-image="ruby-base"
-target="base"
+[[ $opts =~ "--help" ]] && { echo "Usage bin/build [OPTIONS]"; exit 1; }
+
+image=ruby-base
+target=base
 
 # docker build [OPTIONS] PATH | URL | -
 docker build \

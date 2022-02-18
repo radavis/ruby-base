@@ -1,11 +1,20 @@
 #!/usr/bin/env bash
+#
+# Wrapper script for "docker run". Script arguments passed as arguments to "docker run".
+#
+# Example Usage:
+#
+#   bin/run irb
+#   bin/run bash
+#   bin/run rails --help
+#   bin/run ruby lib/hello_world.rb
 
 set -Eeuo pipefail
 
 args="$*"
 image="ruby-base"
-name="ruby-base-web"
-network="ruby-base-net"
+name="ruby-app"
+network="ruby-net"
 port=3000
 
 # docker run [OPTIONS] IMAGE [COMMAND] [ARG...]

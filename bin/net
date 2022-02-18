@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
+#
+# Manage a Docker network for connecting services
 
 set -Eeuo pipefail
 
 opts="$*"
-name=ruby-base-net
+name=ruby-net
 
 up() {
   docker network create --driver bridge ${name}
@@ -20,4 +22,4 @@ info() {
 [[ $opts =~ "--up" ]] && up
 [[ $opts =~ "--down" ]] && down
 [[ $opts =~ "--info" ]] && info
-[[ -z $opts ]] && { echo "Usage: bin/net [--up|--down|--info]"; exit 1; }
+[[ -z $opts ]] && { echo "Usage: bin/net --[up|down|info]"; exit 1; }
