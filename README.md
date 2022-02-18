@@ -34,3 +34,37 @@ gem "httparty"
 $ ./bin/docs
 # visit localhost:8808
 ```
+
+## Rails
+
+Manage the docker network
+
+```bash
+$ bin/net --up
+```
+
+Manage the database service
+
+```bash
+$ bin/db --up
+```
+
+Run migrations
+
+```bash
+$ bin/run rails db:migrate
+```
+
+Start the application
+
+```bash
+$ bin/run
+```
+
+Run `bin/net --info`, find the `ruby-web` container IP address (e.g. - `172.23.0.3`).
+
+Visit the application
+
+```bash
+$ open http://172.23.0.3:3000
+```

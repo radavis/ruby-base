@@ -4,7 +4,6 @@
 
 set -Eeuo pipefail
 
-opts="$*"
 name=ruby-net
 
 up() {
@@ -19,6 +18,7 @@ info() {
   docker network inspect ${name}
 }
 
+opts="$*"
 [[ $opts =~ "--up" ]] && up
 [[ $opts =~ "--down" ]] && down
 [[ $opts =~ "--info" ]] && info
