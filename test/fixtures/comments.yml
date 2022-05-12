@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  note: MyText
+  belongs_to: 
+  belongs_to: 
+  classification: MyString
+
+two:
+  note: MyText
+  belongs_to: 
+  belongs_to: 
+  classification: MyString

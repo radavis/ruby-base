@@ -9,8 +9,8 @@ code within a container.
 - `run` - execute command(s) within `ruby-base` conatiner
 
 ```bash
-$ ./bin/build
-$ ./bin/run ruby lib/hello_world.rb
+$ bin/build
+$ bin/run ruby lib/hello_world.rb
 ```
 
 ## Documentation
@@ -23,7 +23,7 @@ gem "httparty"
 ```
 
 ```bash
-$ ./bin/docs
+$ bin/docs
 # visit localhost:8808
 ```
 
